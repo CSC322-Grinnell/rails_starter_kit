@@ -5,4 +5,12 @@ class ApplicationController < ActionController::Base
       redirect_to(new_user_session_path)
     end
   end
+
+  def after_sign_in_path_for(resource)
+    if current_user.admin?
+      admin_dashboard_path
+    else
+      stored_location_for(resource) || super
+   end
+  end
 end
