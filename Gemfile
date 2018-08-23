@@ -14,6 +14,11 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+# Bootstrap provides a frontend framework and widgets
+gem 'bootstrap'
+# Bootstrap needs jQuery
+gem 'jquery-rails'
+
 # Devise handles user authentication
 gem 'devise'
 
