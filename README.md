@@ -1,24 +1,21 @@
-# README
+# Rails Starter Kit #
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a template to generate a Rails application with helpful defaults set up.
+It is made specially for Grinnell's web development course, and offers features that will be useful to most new projects.
 
-Things you may want to cover:
+This is compatible with Rails 5.1. It may need updates for future versions of Rails.
 
-* Ruby version
+## How to use it ##
 
-* System dependencies
+Make sure you have the following prerequisites:
 
-* Configuration
+ * Everything from the [installing Rails](https://guides.rubyonrails.org/getting_started.html#installing-rails) section of the Rails guide
+ * [Yarn](https://yarnpkg.com/en/)
 
-* Database creation
+Run this to generate a new Rails project, substituting your own project name:
 
-* Database initialization
+```
+rails new my_project_name -m https://raw.githubusercontent.com/CSC322-Grinnell/rails_starter_kit/template/template.rb
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Then, you can open your new project dir and follow the README there for more information.
