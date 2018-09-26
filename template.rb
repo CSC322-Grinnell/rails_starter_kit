@@ -105,6 +105,8 @@ insert_into_file "app/views/layouts/application.html.erb",
   before: / *<\/head>/
 append_to_file ".gitignore", "/public/packs"
 
+copy_file "PROJECT_README.md", "README.md", force: true
+
 after_bundle do
   rails_command "db:migrate"
 
