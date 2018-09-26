@@ -1,6 +1,9 @@
-def source_paths
-  [__dir__]
-end
+# First up, we clone the repo into a temporary dir so we can access the other files
+require "tmpdir"
+tmpdir = Dir.mktmpdir("rails-template-")
+at_exit { FileUtils.remove_entry(tmpdir) }
+git clone: "git@github.com:CSC322-Grinnell/rails_starter_kit.git #{tmpdir} -b template"
+source_paths << tmpdir
 
 gem "devise"
 gem "webpacker"
