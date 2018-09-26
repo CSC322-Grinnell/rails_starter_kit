@@ -74,6 +74,8 @@ gsub_file "app/models/user.rb",
 RB
   ).chomp
 
+copy_file "db/migrate/add_admin_to_users.rb",
+  "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%S")}_add_admin_to_users.rb"
 generate "active_admin:install", "User", "--skip-users", "--skip-comments"
 uncomment_lines "config/initializers/active_admin.rb", /config\.site_title_link/
 uncomment_lines "config/initializers/active_admin.rb", /config\.current_user_method/
