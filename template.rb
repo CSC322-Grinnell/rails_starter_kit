@@ -3,7 +3,7 @@ require "tmpdir"
 tmpdir = Dir.mktmpdir("rails-template-")
 at_exit { FileUtils.remove_entry(tmpdir) }
 git clone: "git@github.com:CSC322-Grinnell/rails_starter_kit.git #{tmpdir} -b template"
-source_paths << tmpdir
+source_paths.prepend tmpdir
 
 gem "devise"
 gem "webpacker"
