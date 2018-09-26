@@ -35,8 +35,12 @@ copy_file "app/views/layouts/_navbar.html.erb"
 insert_into_file "app/views/layouts/application.html.erb", before: / *<%= yield %>/ do
 <<-RB
     <section class="flash">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <p class="alert alert-primary"><%= notice %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="alert alert-warning"><%= alert %></p>
+      <% end %>
     </section>
 RB
   end
