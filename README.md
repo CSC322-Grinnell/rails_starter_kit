@@ -15,7 +15,7 @@ Make sure you have the following prerequisites:
 Run this to generate a new Rails project, substituting your own project name:
 
 ```
-rails new my_project_name -m https://raw.githubusercontent.com/CSC322-Grinnell/rails_starter_kit/template/template.rb
+rails new my_project_name -m https://raw.githubusercontent.com/CSC322-Grinnell/rails_starter_kit/master/template.rb
 ```
 
 Then, you can open your new project dir and follow the README there for more information.
