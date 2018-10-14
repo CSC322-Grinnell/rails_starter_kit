@@ -80,6 +80,7 @@ gsub_file "app/models/user.rb",
   devise :database_authenticatable,\\3
 RB
   ).chomp
+remove_file "test/fixtures/users.yml"
 
 copy_file "db/migrate/add_admin_to_users.rb",
   "db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%S")}_add_admin_to_users.rb"
@@ -101,6 +102,9 @@ append_to_file "db/seeds.rb",
 generate :controller, "Pages", "home", "--no-helper", "--skip-routes", "--no-assets"
 route 'root to: "pages#home"'
 copy_file "app/views/pages/home.html.erb", force: true
+gsub_file "test/controllers/pages_controller_test.rb",
+  "get pages_home_url",
+  "get root_url"
 
 copy_file "config/locales/en.yml", force: true
 
