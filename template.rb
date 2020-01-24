@@ -11,6 +11,8 @@ gem "activeadmin"
 gem "bootstrap", "~> 4.1"
 gem "jquery-rails"
 
+run "bundle install"
+
 environment 'config.action_mailer.default_url_options = { host: "localhost", port: 3000 }', env: :development
 gsub_file "config/environments/production.rb",
   /(  # .+\n)*  config\.log_level = :debug/,
