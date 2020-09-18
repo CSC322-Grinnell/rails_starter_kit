@@ -3,8 +3,8 @@
 This is a template to generate a Rails application with helpful defaults set up.
 It is made specially for Grinnell's web development course, and offers features that will be useful to most new projects.
 
-This is compatible with Rails 5.2. It may need updates for future versions of Rails.  You may need to
-update Ruby to 2.4.1 if you have been following the Hartl tutorial up to this point.  
+This is compatible with Rails 6.0. It may need updates for future versions of Rails.  You may need to
+update Ruby to 2.5.x if you have been following the Hartl tutorial up to this point.
 
 ## How to use it ##
 
