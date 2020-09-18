@@ -6,10 +6,7 @@ git clone: "https://github.com/CSC322-Grinnell/rails_starter_kit.git #{tmpdir}"
 source_paths.prepend tmpdir
 
 gem "devise"
-gem "webpacker"
 gem "activeadmin"
-gem "bootstrap", "~> 4.1"
-gem "jquery-rails"
 
 run "bundle install"
 
@@ -24,10 +21,6 @@ copy_file "config/initializers/content_security_policy.rb", force: true
 insert_into_file "app/views/layouts/application.html.erb",
   '    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">',
   after: "<%= csp_meta_tag %>\n"
-
-insert_into_file "app/assets/javascripts/application.js",
-  "//= require jquery3\n//= require popper\n//= require bootstrap-sprockets\n",
-  before: '//= require_tree .'
 
 insert_into_file "app/views/layouts/application.html.erb",
   "    <%= render partial: 'layouts/navbar' %>\n",
@@ -110,17 +103,28 @@ gsub_file "test/controllers/pages_controller_test.rb",
 
 copy_file "config/locales/en.yml", force: true
 
-rails_command "webpacker:install"
-copy_file "app/javascript/delete-me.js"
-copy_file "app/javascript/packs/application.js", force: true
-insert_into_file "app/views/layouts/application.html.erb",
-  "    <%= javascript_pack_tag 'application' %>\n",
-  before: / *<\/head>/
-append_to_file ".gitignore", "/public/packs"
-
-copy_file "PROJECT_README.md", "README.md", force: true
-
 after_bundle do
+
+  run "yarn add bootstrap jquery popper"
+
+  insert_into_file "config/webpack/environment.js", before: /module\.exports/ do
+<<-JS
+const webpack = require("webpack")
+
+environment.plugins.append("Provide", new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery',
+  Popper: ['popper.js', 'default']
+}))
+
+JS
+  end
+
+  copy_file "app/javascript/delete-me.js"
+  copy_file "app/javascript/packs/application.js", force: true
+
+  copy_file "PROJECT_README.md", "README.md", force: true
+
   rails_command "db:migrate"
 
   git :init
